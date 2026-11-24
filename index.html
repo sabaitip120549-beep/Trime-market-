@@ -1,816 +1,589 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRIMÉ | RENT • SELL • REUSE</title>
-  <link href="https://googleapis.com" rel="stylesheet">
-  <style>
-    :root {
-      --bg-cream: #F7F3EE;
-      --card-bg: #EFE9E1;
-      --latte: #DFD3C3;
-      --brown: #6B533B;
-      --dark-brown: #2C2117;
-      --text-muted: #7A6E65;
-      --white: #FFFFFF;
-      --border-soft: rgba(44, 33, 23, 0.1);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRIMÉ | Rent • Sell • Reuse</title>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Prompt', sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--dark-brown);
-      line-height: 1.6;
-    }
-
-    /* ==================== HEADER & NAVBAR ==================== */
-    header {
-      background-color: rgba(247, 243, 238, 0.95);
-      backdrop-filter: blur(8px);
-      padding: 16px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .logo-wrap {
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .logo-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      line-height: 1;
-      color: var(--dark-brown);
-    }
-
-    .logo-sub {
-      font-size: 8px;
-      letter-spacing: 2.5px;
-      color: var(--text-muted);
-      margin-top: 3px;
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--dark-brown);
-      font-size: 14px;
-      padding: 7px 18px;
-      border-radius: 25px;
-      transition: all 0.25s ease;
-    }
-
-    nav a.active,
-    nav a:hover {
-      background-color: var(--latte);
-      font-weight: 500;
-    }
-
-    .nav-icons {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      color: var(--dark-brown);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Prompt', sans-serif;
-      font-size: 13px;
-      padding: 6px;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-
-    .icon-btn:hover {
-      background-color: rgba(44, 33, 23, 0.06);
-    }
-
-    .badge {
-      position: absolute;
-      top: 0px;
-      right: -2px;
-      background-color: var(--dark-brown);
-      color: var(--white);
-      font-size: 10px;
-      font-weight: 600;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Search Bar Dropdown */
-    .search-bar-wrap {
-      display: none;
-      background-color: var(--latte);
-      padding: 14px 6%;
-      text-align: center;
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .search-bar-wrap input {
-      width: 100%;
-      max-width: 520px;
-      padding: 10px 20px;
-      border-radius: 30px;
-      border: 1px solid rgba(44, 33, 23, 0.15);
-      font-family: 'Prompt', sans-serif;
-      font-size: 14px;
-      outline: none;
-    }
-
-    /* ==================== HERO BANNER ==================== */
-    .hero {
-      position: relative;
-      height: 480px;
-      background: linear-gradient(to right, rgba(35, 25, 18, 0.72), rgba(35, 25, 18, 0.2)),
-                  url('https://unsplash.com') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      padding: 0 8%;
-      color: var(--white);
-    }
-
-    .hero-content {
-      max-width: 540px;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 58px;
-      line-height: 1.05;
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .hero p {
-      font-size: 16px;
-      font-weight: 300;
-      margin-bottom: 28px;
-      opacity: 0.95;
-    }
-
-    .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: var(--latte);
-      color: var(--dark-brown);
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      font-family: 'Prompt', sans-serif;
-    }
-
-    .btn-pill:hover {
-      background-color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    /* ==================== MAIN CONTAINER ==================== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 56px 5%;
-    }
-
-    /* ==================== CATEGORIES ==================== */
-    .cat-header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .cat-header h2 {
-      font-size: 24px;
-      font-weight: 500;
-      color: var(--dark-brown);
-    }
-
-    .cat-header span {
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 16px;
-      text-align: center;
-    }
-
-    .cat-item {
-      cursor: pointer;
-      transition: transform 0.25s ease;
-    }
-
-    .cat-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .cat-circle {
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      background-color: var(--card-bg);
-      margin: 0 auto 12px;
-      overflow: hidden;
-      border: 2.5px solid transparent;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: border-color 0.25s;
-    }
-
-    .cat-item.active .cat-circle {
-      border-color: var(--brown);
-    }
-
-    .cat-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .cat-name-th {
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .cat-name-en {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    /* ==================== SPLIT PROMO CARDS ==================== */
-    .promo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 56px;
-    }
-
-    .promo-card {
-      height: 240px;
-      border-radius: 16px;
-      padding: 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .promo-rent {
-      background: linear-gradient(to right, rgba(44, 33, 23, 0.82), rgba(44, 33, 23, 0.2)),
-                  url('https://unsplash.com') center/cover;
-    }
-
-    .promo-preloved {
-      background: linear-gradient(to right, rgba(44, 33, 23, 0.82), rgba(44, 33, 23, 0.2)),
-                  url('https://unsplash.com') center/cover;
-    }
-
-    .promo-card h3 {
-      font-size: 26px;
-      font-weight: 500;
-      line-height: 1.1;
-    }
-
-    .promo-card small {
-      font-size: 12px;
-      letter-spacing: 2px;
-      opacity: 0.9;
-      margin-bottom: 10px;
-    }
-
-    .promo-card p {
-      font-size: 14px;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    /* ==================== PRODUCTS SECTION ==================== */
-    .products-section {
-      margin-top: 60px;
-    }
-
-    .sec-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 28px;
-    }
-
-    .sec-title-row h2 {
-      font-size: 24px;
-      font-weight: 500;
-    }
-
-    .sec-title-row span {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .view-all {
-      font-size: 14px;
-      color: var(--dark-brown);
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .view-all:hover {
-      text-decoration: underline;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .product-card {
-      background-color: var(--white);
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-    }
-
-    .prod-img-wrap {
-      position: relative;
-      height: 230px;
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 14px;
-    }
-
-    .prod-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .fav-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .prod-title {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .price-tag {
-      background-color: var(--bg-cream);
-      padding: 5px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      color: var(--brown);
-      margin-bottom: 6px;
-    }
-
-    .card-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 10px;
-    }
-
-    .btn-rent-sm,
-    .btn-buy-sm {
-      padding: 8px 6px;
-      border: none;
-border-radius: 8px;
-font-size: 12px;
-cursor: pointer;
-font-family: 'Prompt', sans-serif;
-font-weight: 500;
-transition: opacity 0.2s;
+<style>
+:root {
+  --black: #211f1d;
+  --dark: #302a26;
+  --cream: #f7f3ed;
+  --beige: #e5d5c4;
+  --brown: #806653;
+  --white: #fffdf9;
 }
-.btn-rent-sm {
-background-color: var(--latte);
-color: var(--dark-brown);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.btn-buy-sm {
-background-color: var(--dark-brown);
-color: var(--white);
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--black);
 }
-.btn-rent-sm:hover,
-.btn-buy-sm:hover {
-opacity: 0.85;
+
+header {
+  background: var(--black);
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-/* ==================== SHARE / SELL BANNER ==================== */
-.share-banner {
-background: linear-gradient(to right, rgba(44, 33, 23, 0.92), rgba(44, 33, 23, 0.65)),
-url('unsplash.com') center/cover;
-border-radius: 18px;
-padding: 46px 52px;
-color: var(--white);
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 56px;
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: var(--beige);
 }
-.share-banner h2 {
-font-family: 'Cormorant Garamond', serif;
-font-size: 38px;
-font-weight: 600;
-margin-bottom: 4px;
-}
-.share-banner p {
-font-size: 15px;
-font-weight: 300;
-opacity: 0.9;
-}
-/* ==================== FOOTER ==================== */
-footer {
-background-color: var(--dark-brown);
-color: var(--latte);
-padding: 56px 6% 28px;
-margin-top: 70px;
-}
-.footer-top {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 36px;
-padding-bottom: 36px;
-border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-.footer-links {
-display: flex;
-gap: 54px;
-flex-wrap: wrap;
-}
-.footer-col h4 {
-color: var(--white);
-font-size: 14px;
-font-weight: 500;
-margin-bottom: 2px;
-}
-.footer-col span {
-font-size: 12px;
-color: var(--text-muted);
-}
-.footer-bottom {
-text-align: center;
-font-size: 12px;
-padding-top: 24px;
-color: var(--text-muted);
-}
-/* ==================== MODALS (LOGIN / POST / CART) ==================== */
-.modal-overlay {
-display: none;
-position: fixed;
-inset: 0;
-background-color: rgba(0, 0, 0, 0.55);
-backdrop-filter: blur(3px);
-z-index: 999;
-justify-content: center;
-align-items: center;
-padding: 16px;
-}
-.modal-box {
-background-color: var(--bg-cream);
-padding: 32px;
-border-radius: 18px;
-width: 100%;
-max-width: 400px;
-position: relative;
-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-}
-.close-modal {
-position: absolute;
-top: 14px;
-right: 18px;
-background: none;
-border: none;
-font-size: 24px;
-cursor: pointer;
-color: var(--text-muted);
-}
-.modal-tabs {
-display: flex;
-gap: 10px;
-margin-bottom: 20px;
-border-bottom: 1px solid var(--border-soft);
-padding-bottom: 10px;
-}
-.tab-btn {
-flex: 1;
-padding: 8px;
-background: none;
-border: none;
-font-family: 'Prompt', sans-serif;
-font-size: 15px;
-cursor: pointer;
-color: var(--text-muted);
-border-radius: 8px;
-}
-.tab-btn.active {
-background-color: var(--latte);
-color: var(--dark-brown);
-font-weight: 500;
-}
-.form-group {
-margin-bottom: 14px;
-}
-.form-group label {
-display: block;
-font-size: 12px;
-margin-bottom: 4px;
-color: var(--brown);
-}
-.form-group input,
-.form-group select {
-width: 100%;
-padding: 11px 14px;
-border: 1px solid #D5CBC0;
-border-radius: 10px;
-font-family: 'Prompt', sans-serif;
-font-size: 14px;
-background-color: var(--white);
-outline: none;
-}
-.submit-btn {
-width: 100%;
-padding: 12px;
-background-color: var(--dark-brown);
-color: var(--white);
-border: none;
-border-radius: 10px;
-font-family: 'Prompt', sans-serif;
-font-size: 15px;
-font-weight: 500;
-cursor: pointer;
-margin-top: 8px;
-transition: background 0.2s;
-}
-.submit-btn:hover {
-background-color: var(--brown);
-}
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 960px) {
-.cat-grid {
-grid-template-columns: repeat(4, 1fr);
-}
-.product-grid {
-grid-template-columns: repeat(2, 1fr);
-}
-.promo-grid {
-grid-template-columns: 1fr;
-}
+
 nav {
-display: none;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
 }
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
 }
-@media (max-width: 540px) {
-.cat-grid {
-grid-template-columns: repeat(3, 1fr);
+
+nav a:hover {
+  color: var(--beige);
 }
-.cat-circle {
-width: 82px;
-height: 82px;
+
+.hero {
+  min-height: 370px;
+  padding: 65px 8%;
+  display: flex;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(25,22,20,.88),
+    rgba(25,22,20,.15)),
+    url("https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400")
+    center/cover;
 }
+
+.hero-content {
+  max-width: 520px;
+}
+
+.hero small {
+  color: var(--beige);
+  letter-spacing: 2px;
+}
+
 .hero h1 {
-font-size: 42px;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 7vw, 62px);
+  margin: 15px 0;
 }
-.share-banner {
-flex-direction: column;
-text-align: center;
-gap: 20px;
-padding: 32px 24px;
+
+.hero p {
+  line-height: 1.8;
+  margin-bottom: 24px;
 }
+
+.btn {
+  display: inline-block;
+  background: var(--beige);
+  color: var(--black);
+  padding: 13px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }
-let currentUser = localStorage.getItem('trime_current_user') || null;
-updateUserUI();
-function openAuthModal() {
-if (currentUser) {
-if (confirm('คุณกำลังเข้าสู่ระบบในชื่อ "' + currentUser + '"\nต้องการออกจากระบบหรือไม่?')) {
-localStorage.removeItem('trime_current_user');
-currentUser = null;
-updateUserUI();
+
+section {
+  padding: 45px 6%;
 }
-} else {
-switchAuthTab('login');
-document.getElementById('authModal').style.display = 'flex';
+
+.section-title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: Georgia, serif;
+  font-size: 30px;
 }
+
+.section-subtitle {
+  text-align: center;
+  color: var(--brown);
+  margin-top: -15px;
+  margin-bottom: 28px;
 }
-function switchAuthTab(mode) {
-const loginForm = document.getElementById('loginForm');
-const regForm = document.getElementById('registerForm');
-const tabLogin = document.getElementById('tabLogin');
-const tabReg = document.getElementById('tabRegister');
-if (mode === 'login') {
-loginForm.style.display = 'block';
-regForm.style.display = 'none';
-tabLogin.classList.add('active');
-tabReg.classList.remove('active');
-} else {
-loginForm.style.display = 'none';
-regForm.style.display = 'block';
-tabLogin.classList.remove('active');
-tabReg.classList.add('active');
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
+
+.service {
+  background: var(--black);
+  color: white;
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
 }
-function handleLogin(e) {
-e.preventDefault();
-const user = document.getElementById('loginUser').value.trim();
-if (user) {
-currentUser = user;
-localStorage.setItem('trime_current_user', user);
-updateUserUI();
-closeModals();
-alert('เข้าสู่ระบบสำเร็จ! ยินดีต้อนรับคุณ ' + user);
+
+.service h3 {
+  color: var(--beige);
+  font-size: 25px;
+  margin-bottom: 10px;
 }
+
+.service p {
+  margin-bottom: 18px;
+  color: #eee3d8;
 }
-function handleRegister(e) {
-e.preventDefault();
-const user = document.getElementById('regUser').value.trim();
-if (user) {
-currentUser = user;
-localStorage.setItem('trime_current_user', user);
-updateUserUI();
-closeModals();
-alert('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับคุณ ' + user);
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 25px 0;
 }
+
+.category-btn {
+  border: 1px solid #c9b7a5;
+  color: var(--black);
+  background: transparent;
+  border-radius: 25px;
+  padding: 11px 19px;
+  cursor: pointer;
 }
-function updateUserUI() {
-document.getElementById('userLabel').textContent = currentUser ? currentUser : 'เข้าสู่ระบบ';
+
+.category-btn.active,
+.category-btn:hover {
+  background: var(--black);
+  color: white;
 }
-// ==================== 2. ระบบลงประกาศสินค้า ====================
-function openPostModal() {
-if (!currentUser) {
-alert('กรุณาเข้าสู่ระบบก่อนลงประกาศสินค้าครับ');
-openAuthModal();
-} else {
-document.getElementById('postModal').style.display = 'flex';
+
+.filters {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
+
+.filters button {
+  border: 1px solid var(--black);
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: transparent;
+  cursor: pointer;
 }
-function handleAddProduct(e) {
-e.preventDefault();
-const name = document.getElementById('newProdName').value.trim();
-const cat = document.getElementById('newProdCat').value;
-const rentPrice = Number(document.getElementById('newProdRent').value);
-const sellPrice = Number(document.getElementById('newProdSell').value);
-const grid = document.getElementById('productGrid');
-const newCard = document.createElement('div');
-newCard.className = 'product-card';
-newCard.dataset.category = cat;
-newCard.dataset.name = name;
-newCard.innerHTML = <div class="prod-img-wrap"> <img src="https://unsplash.com" alt="${name}"> <button class="fav-btn" onclick="toggleFav(this)">♡</button> </div> <div class="prod-title">${name}</div> <div class="price-tag">เช่า / วันละ ${rentPrice.toLocaleString()} บาท</div> <div class="price-tag">ขาย / ${sellPrice.toLocaleString()} บาท</div> <div class="card-actions"> <button class="btn-rent-sm" onclick="addToCart('${name} (เช่า)', ${rentPrice})">เช่ารายวัน</button> <button class="btn-buy-sm" onclick="addToCart('${name} (ซื้อ)', ${sellPrice})">ซื้อเลย</button> </div>;
-grid.prepend(newCard);
-closeModals();
-e.target.reset();
-alert('ลงประกาศ "' + name + '" เรียบร้อยแล้ว!');
-document.getElementById('products-sec').scrollIntoView();
+
+.filters button.active {
+  background: var(--black);
+  color: white;
 }
-// ==================== 3. ระบบกรองหมวดหมู่ & ค้นหา ====================
-function filterProducts(category, el) {
-document.querySelectorAll('.cat-item').forEach(item => item.classList.remove('active'));
-if (el) el.classList.add('active');
-const cards = document.querySelectorAll('.product-card');
-cards.forEach(card => {
-if (category === 'all' || card.dataset.category === category) {
-card.style.display = 'flex';
-} else {
-card.style.display = 'none';
+
+.search {
+  display: block;
+  width: min(100%, 450px);
+  margin: 0 auto 25px;
+  padding: 14px 18px;
+  border: 1px solid #d2c4b6;
+  border-radius: 30px;
+  background: white;
+  font-size: 15px;
 }
-});
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
-function setActiveNav(el) {
-document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-el.classList.add('active');
+
+.product {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #0000000c;
 }
-function toggleSearch() {
-const bar = document.getElementById('searchBar');
-bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
-if (bar.style.display === 'block') {
-document.getElementById('searchInput').focus();
+
+.product img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
+
+.product-info {
+  padding: 14px;
 }
-function searchProducts() {
-const query = document.getElementById('searchInput').value.toLowerCase();
-document.querySelectorAll('.product-card').forEach(card => {
-const name = card.dataset.name.toLowerCase();
-card.style.display = name.includes(query) ? 'flex' : 'none';
-});
+
+.product-info h3 {
+  font-size: 16px;
+  margin-bottom: 7px;
 }
-// ==================== 4. ระบบตะกร้าสินค้า & ถูกใจ ====================
-let cart = [];
-function addToCart(name, price) {
-cart.push({ name, price });
-document.getElementById('cartCount').textContent = cart.length;
-alert('เพิ่ม "' + name + '" ลงในตะกร้าแล้ว');
+
+.product-info p {
+  font-size: 13px;
+  color: var(--brown);
+  margin-bottom: 10px;
 }
-function openCartModal() {
-const list = document.getElementById('cartItemsList');
-const totalEl = document.getElementById('cartTotal');
-list.innerHTML = '';
-if (cart.length === 0) {
-list.innerHTML = 'ยังไม่มีสินค้าในตะกร้า';
-totalEl.textContent = '';
-} else {
-let total = 0;
-cart.forEach((item, index) => {
-total += item.price;
-list.innerHTML += <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #E5DDD3;"> <span>${index + 1}. ${item.name}</span> <span>${item.price.toLocaleString()} ฿</span> </div>;
-});
-totalEl.textContent = 'ยอดรวมทั้งหมด: ' + total.toLocaleString() + ' บาท';
+
+.price {
+  font-weight: bold;
+  color: var(--black);
 }
-document.getElementById('cartModal').style.display = 'flex';
+
+.tag {
+  display: inline-block;
+  background: var(--beige);
+  color: var(--dark);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-bottom: 9px;
 }
-function checkout() {
-if (cart.length === 0) {
-alert('ตะกร้าสินค้ายังว่างอยู่ครับ');
-return;
+
+.product[hidden] {
+  display: none;
 }
-if (!currentUser) {
-closeModals();
-alert('กรุณาเข้าสู่ระบบก่อนยืนยันการสั่งซื้อครับ');
-openAuthModal();
-return;
+
+.no-results {
+  text-align: center;
+  padding: 30px;
+  color: var(--brown);
+  display: none;
 }
-alert('ขอบคุณคุณ ' + currentUser + ' ระบบได้รับคำสั่งซื้อเรียบร้อยแล้ว!');
-cart = [];
-document.getElementById('cartCount').textContent = '0';
-closeModals();
+
+.sell-banner {
+  margin: 10px 6% 45px;
+  background: var(--black);
+  color: white;
+  border-radius: 15px;
+  padding: 35px;
+  text-align: center;
 }
-function toggleFav(btn) {
-if (btn.textContent === '♡') {
-btn.textContent = '♥';
-btn.style.color = '#C0392B';
-} else {
-btn.textContent = '♡';
-btn.style.color = '#2C2117';
+
+.sell-banner h2 {
+  font-family: Georgia, serif;
+  margin-bottom: 12px;
 }
+
+.sell-banner p {
+  color: var(--beige);
+  margin-bottom: 20px;
 }
-function closeModals() {
-document.getElementById('authModal').style.display = 'none';
-document.getElementById('postModal').style.display = 'none';
-document.getElementById('cartModal').style.display = 'none';
+
+footer {
+  background: var(--black);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
 }
+
+footer .logo {
+  margin-bottom: 10px;
+}
+
+footer p {
+  color: var(--beige);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+@media(max-width: 850px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 550px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 13px;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .product img {
+    height: 170px;
+  }
+
+  section {
+    padding: 35px 5%;
+  }
+
+  .hero {
+    min-height: 330px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TRIMÉ.</div>
+  <nav>
+    <a href="#">หน้าหลัก</a>
+    <a href="#products" onclick="setType('rent')">เช่ารายวัน</a>
+    <a href="#products" onclick="setType('sell')">ขายมือสอง</a>
+    <a href="#list">ลงประกาศ</a>
+    <a href="#footer">ติดต่อเรา</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <small>A SECOND CHANCE FOR FASHION</small>
+    <h1>Rent it. Love it.<br>Own it.</h1>
+    <p>เช่าในวันที่ต้องการ หรือเลือกเป็นเจ้าของชิ้นที่ใช่<br>
+    ค้นพบแฟชั่นในแบบของคุณที่ TRIMÉ</p>
+    <a class="btn" href="#products">เริ่มเลือกสินค้า →</a>
+  </div>
+</div>
+
+<section>
+  <h2 class="section-title">เลือกบริการที่ต้องการ</h2>
+  <p class="section-subtitle">Choose your style</p>
+
+  <div class="services">
+    <div class="service">
+      <h3>RENT</h3>
+      <p>เช่าสินค้ารายวัน ใส่ได้ในทุกโอกาส</p>
+      <a href="#products" class="btn"
+         onclick="setType('rent')">เลือกเช่าสินค้า →</a>
+    </div>
+
+    <div class="service">
+      <h3>PRE-LOVED</h3>
+      <p>เลือกซื้อสินค้ามือสองในราคาที่เข้าถึงได้</p>
+      <a href="#products" class="btn"
+         onclick="setType('sell')">เลือกซื้อสินค้า →</a>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <h2 class="section-title">Discover Collection</h2>
+  <p class="section-subtitle">ค้นหาสินค้าที่ใช่สำหรับคุณ</p>
+
+  <input class="search" id="search"
+    type="search" placeholder="ค้นหาสินค้า เช่น กระเป๋า เสื้อผ้า...">
+
+  <div class="categories">
+    <button class="category-btn active"
+      onclick="setCategory('all',this)">ทั้งหมด</button>
+    <button class="category-btn"
+      onclick="setCategory('clothes',this)">เสื้อผ้า</button>
+    <button class="category-btn"
+      onclick="setCategory('bags',this)">กระเป๋า</button>
+    <button class="category-btn"
+      onclick="setCategory('shoes',this)">รองเท้า</button>
+    <button class="category-btn"
+      onclick="setCategory('accessories',this)">เครื่องประดับ</button>
+  </div>
+
+  <div class="filters">
+    <button class="active" onclick="setType('all',this)">สินค้าทั้งหมด</button>
+    <button onclick="setType('rent',this)">เช่ารายวัน</button>
+    <button onclick="setType('sell',this)">ขายมือสอง</button>
+  </div>
+
+  <div class="products" id="productList">
+
+    <article class="product" data-category="clothes"
+      data-type="rent" data-name="เสื้อคาร์ดิแกน">
+      <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600" alt="เสื้อคาร์ดิแกน">
+      <div class="product-info">
+        <span class="tag">เช่ารายวัน</span>
+        <h3>เสื้อคาร์ดิแกน</h3>
+        <p>สภาพดี ไซซ์ M</p>
+        <div class="price">120 บาท / วัน</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="bags"
+      data-type="sell" data-name="กระเป๋าสะพาย">
+      <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600" alt="กระเป๋าสะพาย">
+      <div class="product-info">
+        <span class="tag">ขายมือสอง</span>
+        <h3>กระเป๋าสะพาย</h3>
+        <p>สภาพดี ใช้งานน้อย</p>
+        <div class="price">890 บาท</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="clothes"
+      data-type="rent" data-name="เบลเซอร์">
+      <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600" alt="เบลเซอร์">
+      <div class="product-info">
+        <span class="tag">เช่ารายวัน</span>
+        <h3>เบลเซอร์</h3>
+        <p>สีครีม ไซซ์ S-M</p>
+        <div class="price">150 บาท / วัน</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="shoes"
+      data-type="sell" data-name="รองเท้าแฟชั่น">
+      <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600" alt="รองเท้าแฟชั่น">
+      <div class="product-info">
+        <span class="tag">ขายมือสอง</span>
+        <h3>รองเท้าแฟชั่น</h3>
+        <p>สภาพดี ไซซ์ 38</p>
+        <div class="price">450 บาท</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="accessories"
+      data-type="sell" data-name="แว่นกันแดด">
+      <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600" alt="แว่นกันแดด">
+      <div class="product-info">
+        <span class="tag">ขายมือสอง</span>
+        <h3>แว่นกันแดด</h3>
+        <p>สภาพดี พร้อมกล่อง</p>
+        <div class="price">350 บาท</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="bags"
+      data-type="rent" data-name="กระเป๋าถือ">
+      <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600" alt="กระเป๋าถือ">
+      <div class="product-info">
+        <span class="tag">เช่ารายวัน</span>
+        <h3>กระเป๋าถือ</h3>
+        <p>สีน้ำตาล รุ่นคลาสสิก</p>
+        <div class="price">180 บาท / วัน</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="shoes"
+      data-type="rent" data-name="รองเท้าส้นสูง">
+      <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600" alt="รองเท้าส้นสูง">
+      <div class="product-info">
+        <span class="tag">เช่ารายวัน</span>
+        <h3>รองเท้าส้นสูง</h3>
+        <p>สีดำ ไซซ์ 37</p>
+        <div class="price">100 บาท / วัน</div>
+      </div>
+    </article>
+
+    <article class="product" data-category="accessories"
+      data-type="rent" data-name="เครื่องประดับ">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600" alt="เครื่องประดับ">
+      <div class="product-info">
+        <span class="tag">เช่ารายวัน</span>
+        <h3>เครื่องประดับ</h3>
+        <p>ดีไซน์มินิมอล</p>
+        <div class="price">50 บาท / วัน</div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="no-results" id="noResults">ไม่พบสินค้าที่ค้นหา</p>
+</section>
+
+<div class="sell-banner" id="list">
+  <h2>Have something to share?</h2>
+  <p>ลงขายหรือปล่อยเช่าสินค้าของคุณกับ TRIMÉ</p>
+  <button class="btn" onclick="alert('ระบบลงประกาศจะเปิดให้ใช้งานในขั้นตอนถัดไป')">
+    + ลงประกาศสินค้า
+  </button>
+</div>
+
+<footer id="footer">
+  <div class="logo">TRIMÉ.</div>
+  <p>RENT • SELL • REUSE</p>
+  <p>เกี่ยวกับเรา | คำถามที่พบบ่อย | ติดต่อเรา</p>
+  <p>© 2026 TRIMÉ. All rights reserved.</p>
+</footer>
+
+<script>
+let currentCategory = "all";
+let currentType = "all";
+
+function setCategory(category, button) {
+  currentCategory = category;
+
+  document.querySelectorAll(".category-btn")
+    .forEach(b => b.classList.remove("active"));
+
+  if (button) button.classList.add("active");
+
+  filterProducts();
+}
+
+function setType(type, button) {
+  currentType = type;
+
+  document.querySelectorAll(".filters button")
+    .forEach(b => b.classList.remove("active"));
+
+  if (button) button.classList.add("active");
+
+  if (!button) {
+    document.querySelectorAll(".filters button")
+      .forEach(b => {
+        if (b.textContent.includes(
+          type === "rent" ? "เช่า" :
+          type === "sell" ? "ขาย" : "ทั้งหมด"
+        )) b.classList.add("active");
+      });
+  }
+
+  filterProducts();
+}
+
+function filterProducts() {
+  const keyword = document.getElementById("search")
+    .value.toLowerCase();
+
+  let visible = 0;
+
+  document.querySelectorAll(".product").forEach(product => {
+    const categoryMatch =
+      currentCategory === "all" ||
+      product.dataset.category === currentCategory;
+
+    const typeMatch =
+      currentType === "all" ||
+      product.dataset.type === currentType;
+
+    const nameMatch =
+      product.dataset.name.toLowerCase().includes(keyword);
+
+    const show = categoryMatch && typeMatch && nameMatch;
+
+    product.hidden = !show;
+
+    if (show) visible++;
+  });
+
+  document.getElementById("noResults").style.display =
+    visible === 0 ? "block" : "none";
+}
+
+document.getElementById("search")
+  .addEventListener("input", filterProducts);
+</script>
+
+</body>
+</html>
