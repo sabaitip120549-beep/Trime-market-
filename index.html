@@ -343,6 +343,17 @@ footer {
       <div class="category">✨<br>ความงาม</div>
 
     </div>
+    <div class="filter-buttons" style="display:flex;gap:10px;flex-wrap:wrap;margin:20px 0;">
+
+  <button onclick="filterProducts('all')">ทั้งหมด</button>
+
+  <button onclick="filterProducts('bag')">กระเป๋า</button>
+
+  <button onclick="filterProducts('clothes')">เสื้อผ้า</button>
+
+  <button onclick="filterProducts('shoes')">รองเท้า</button>
+
+</div>
 
   </section>
 
@@ -366,11 +377,11 @@ footer {
 
     <div class="products">
 
-      <div class="product">
+      <div class="product" data-category="bag">
 
         <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="กระเป๋าแฟชั่น">
 
-        <h3>Classic Bag</h3>
+        <h3>กระเป๋า Lyn </h3>
 
         <p>ราคาเช่า ฿150 / วัน</p>
 
@@ -378,11 +389,11 @@ footer {
 
       </div>
 
-      <div class="product">
+      <div class="product" data-category="clothes">
 
         <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" alt="เสื้อผ้า">
 
-        <h3>Minimal Outfit</h3>
+        <h3>Dresse</h3>
 
         <p>ราคาเช่า ฿120 / วัน</p>
 
@@ -412,13 +423,13 @@ footer {
 
     </div>
 
-    <div class="products">
+  <div class="product">
 
-      <div class="product">
+   <div class="product" data-category="bag">
 
         <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500" alt="กระเป๋ามือสอง">
 
-        <h3>Everyday Bag</h3>
+        <h3>กระเป๋า Coach </h3>
 
         <p>ราคาขาย ฿890</p>
 
@@ -426,11 +437,11 @@ footer {
 
       </div>
 
-      <div class="product">
+    <div class="product" data-category="shoes">
 
         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="รองเท้ามือสอง">
 
-        <h3>Classic Sneakers</h3>
+        <h3>รองเท้า Nike</h3>
 
         <p>ราคาขาย ฿650</p>
 
@@ -465,6 +476,29 @@ footer {
   <p>© 2026 TRIMÉ. All rights reserved.</p>
 
 </footer>
+<script>
+
+function filterProducts(category) {
+
+  const products = document.querySelectorAll('.product');
+
+  products.forEach(function(product) {
+
+    if (category === 'all' || product.dataset.category === category) {
+
+      product.style.display = '';
+
+    } else {
+
+      product.style.display = 'none';
+
+    }
+
+  });
+
+}
+
+</script>
 
 </body>
 
