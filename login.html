@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ - Trime Market</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 350px;
+    }
+    h2 { text-align: center; margin-bottom: 20px; }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover { background-color: #555; }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>เข้าสู่ระบบ</h2>
+  <form onsubmit="handleLogin(event)">
+    <input type="text" id="username" placeholder="ชื่อผู้ใช้ หรือ อีเมล" required>
+    <input type="password" id="password" placeholder="รหัสผ่าน" required>
+    <button type="submit">เข้าสู่ระบบ</button>
+  </form>
+  <a href="index.html" class="back-link">← กลับหน้าหลัก</a>
+</div>
+
+<script>
+  function handleLogin(event) {
+    event.preventDefault(); // ป้องกันหน้าเว็บรีเฟรช
+    const user = document.getElementById('username').value;
+    
+    // ตัวอย่างการจำลองล็อกอินสำเร็จ
+    alert('ยินดีต้อนรับคุณ ' + user + '!');
+    window.location.href = 'index.html'; // เด้งกลับไปหน้าหลัก
+  }
+</script>
+
+</body>
+</html>
