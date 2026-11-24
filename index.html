@@ -1,495 +1,325 @@
-
-
 <!DOCTYPE html>
-
 <html lang="th">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TRIMÉ | Pre-loved & Rental Market</title>
-
-<style>
-
-:root {
-
-  --cream:#F5F0E9;
-
-  --latte:#DCC8B5;
-
-  --brown:#806653;
-
-  --dark:#292522;
-
-  --white:#fff;
-
-}
-
-* { box-sizing:border-box; }
-
-body {
-
-  margin:0;
-
-  font-family:Arial,sans-serif;
-
-  background:var(--cream);
-
-  color:var(--dark);
-
-}
-
-header {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  padding:18px 6%;
-
-  background:var(--cream);
-
-  position:sticky;
-
-  top:0;
-
-  z-index:5;
-
-}
-
-.logo {
-
-  font-size:27px;
-
-  font-weight:bold;
-
-  letter-spacing:5px;
-
-}
-
-nav a {
-
-  color:var(--dark);
-
-  text-decoration:none;
-
-  margin-left:16px;
-
-  font-size:13px;
-
-}
-
-.hero {
-
-  margin:18px 5%;
-
-  padding:65px 8%;
-
-  min-height:290px;
-
-  border-radius:18px;
-
-  background:linear-gradient(120deg,#DCC8B5,#EFE4D8);
-
-}
-
-.hero small { letter-spacing:3px; }
-
-.hero h1 { font-size:38px; margin:15px 0; }
-
-.hero p { line-height:1.7; }
-
-.btn {
-
-  display:inline-block;
-
-  background:var(--dark);
-
-  color:white;
-
-  padding:12px 22px;
-
-  border-radius:5px;
-
-  text-decoration:none;
-
-  margin-top:12px;
-
-  border:0;
-
-}
-
-section { padding:28px 6%; }
-
-.section-title {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-}
-
-.section-title h2 { font-size:23px; }
-
-.categories {
-
-  display:grid;
-
-  grid-template-columns:repeat(3,1fr);
-
-  gap:12px;
-
-}
-
-.category {
-
-  background:#E9DED2;
-
-  padding:23px 8px;
-
-  text-align:center;
-
-  border-radius:12px;
-
-  font-weight:bold;
-
-}
-
-.tabs {
-
-  display:flex;
-
-  gap:12px;
-
-  flex-wrap:wrap;
-
-  margin:18px 0;
-
-}
-
-.tabs a {
-
-  padding:11px 18px;
-
-  background:var(--latte);
-
-  border-radius:30px;
-
-  color:var(--dark);
-
-  text-decoration:none;
-
-}
-
-.products {
-
-  display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
-  gap:14px;
-
-}
-
-.product {
-
-  background:white;
-
-  border-radius:12px;
-
-  overflow:hidden;
-
-  padding-bottom:15px;
-
-}
-
-.product img {
-
-  width:100%;
-
-  height:170px;
-
-  object-fit:cover;
-
-  background:#E9DED2;
-
-}
-
-.product h3,.product p { margin:10px 12px; }
-
-.product p { color:var(--brown); font-size:14px; }
-
-.product button {
-
-  margin:0 12px;
-
-  padding:9px 14px;
-
-  background:var(--dark);
-
-  color:white;
-
-  border:0;
-
-  border-radius:5px;
-
-}
-
-.join {
-
-  margin:25px 5%;
-
-  padding:35px 20px;
-
-  background:var(--latte);
-
-  text-align:center;
-
-  border-radius:15px;
-
-}
-
-footer {
-
-  background:var(--dark);
-
-  color:white;
-
-  text-align:center;
-
-  padding:28px;
-
-  font-size:13px;
-
-}
-
-@media(min-width:700px) {
-
-  .categories { grid-template-columns:repeat(6,1fr); }
-
-  .products { grid-template-columns:repeat(4,1fr); }
-
-  .hero h1 { font-size:48px; }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-  <div class="logo">TRIMÉ</div>
-
-  <<nav>
-
-  <a href="#home">Home</a>
-
-  <a href="#rent">Rent</a>
-
-  <a href="#preloved">Pre-loved</a>
-
-  <a href="#sell">ลงประกาศ</a>
-
-  <a href="login.html" style="padding: 6px 14px; background: var(--brown); color: var(--cream); text-decoration: none; border-radius: 5px;">เข้าสู่ระบบ</a>
-
-</nav>
-
-</header>
-
-<main id="home">
-
-  <div class="hero">
-
-    <small>THE NEW WAY TO SHOP</small>
-
-    <h1>Give Items<br>A Second Life.</h1>
-
-    <p>ค้นพบสินค้าแฟชั่นมือสองและไอเทมให้เช่า<br>
-
-    เลือกสไตล์ที่ใช่ ในราคาที่คุณชอบ</p>
-
-    <a class="btn" href="#categories">EXPLORE NOW</a>
-
-  </div>
-
-  <section id="categories">
-
-    <div class="section-title">
-
-      <h2>Shop by Category</h2>
-
-    </div>
-
-    <div class="categories">
-
-  <div class="category" onclick="filterProducts('bag')" style="cursor: pointer;">👜<br>กระเป๋า</div>
-
-  <div class="category" onclick="filterProducts('clothes')" style="cursor: pointer;">👗<br>เสื้อผ้า</div>
-
-  <div class="category" onclick="filterProducts('shoes')" style="cursor: pointer;">👟<br>รองเท้า</div>
-
-  <div class="category" onclick="filterProducts('accessories')" style="cursor: pointer;">💍<br>เครื่องประดับ</div>
-
-  <div class="category" onclick="filterProducts('watch')" style="cursor: pointer;">⌚<br>นาฬิกา</div>
-
-  <div class="category" onclick="filterProducts('beauty')" style="cursor: pointer;">💄<br>ความงาม</div>
-
-</div>
-  </section>
-
-  <section id="rent">
-
-    <div class="section-title">
-
-      <h2>Daily Rental</h2>
-
-      <span>เช่ารายวัน</span>
-
-    </div>
-
-    <div class="tabs">
-
-      <a href="#rent">ดูสินค้าเช่า</a>
-
-      <a href="#sell">ลงสินค้าให้เช่า</a>
-
-    </div>
-
-    <div class="products">
-
-      <div class="product" data-category="bag">
-
-        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="กระเป๋าแฟชั่น">
-
-        <h3>กระเป๋า Lyn </h3>
-
-        <p>ราคาเช่า ฿150 / วัน</p>
-
-        <button onclick="alert('ตัวอย่างหน้าสินค้าเช่า')">ดูรายละเอียด</button>
-
-      </div>
-
-      <div class="product" data-category="clothes">
-
-        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" alt="เสื้อผ้า">
-
-        <h3>Dresse</h3>
-
-        <p>ราคาเช่า ฿120 / วัน</p>
-
-        <button onclick="alert('ตัวอย่างหน้าสินค้าเช่า')">ดูรายละเอียด</button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="preloved">
-
-    <div class="section-title">
-
-      <h2>Pre-loved Items</h2>
-
-      <span>ขายสินค้ามือสอง</span>
-
-    </div>
-
-    <div class="tabs">
-
-      <a href="#preloved">ดูสินค้ามือสอง</a>
-
-      <a href="#sell">ลงขายสินค้า</a>
-
-    </div>
-
-  <div class="product">
-
-   <div class="product" data-category="bag">
-
-        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500" alt="กระเป๋ามือสอง">
-
-        <h3>กระเป๋า Coach </h3>
-
-        <p>ราคาขาย ฿890</p>
-
-        <button onclick="alert('ตัวอย่างหน้าสินค้ามือสอง')">ดูรายละเอียด</button>
-
-      </div>
-
-    <div class="product" data-category="shoes">
-
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="รองเท้ามือสอง">
-
-        <h3>รองเท้า Nike</h3>
-
-        <p>ราคาขาย ฿650</p>
-
-        <button onclick="alert('ตัวอย่างหน้าสินค้ามือสอง')">ดูรายละเอียด</button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <div class="join" id="sell">
-
-    <h2>Have Something to Share?</h2>
-
-    <p>เปลี่ยนของที่ไม่ได้ใช้ ให้กลายเป็นโอกาสใหม่</p>
-
-    <a class="btn" href="sabai.tip120549@gmail.com">ลงประกาศสินค้า</a>
-
-    <p><small>ตัวอย่างเว็บไซต์: ระบบลงประกาศและสมาชิกยังไม่เชื่อมต่อจริง</small></p>
-
-  </div>
-
-</main>
-
-<footer>
-
-  <div class="logo">TRIMÉ</div>
-
-  <p>Pre-loved & Rental Marketplace</p>
-
-  <p>© 2026 TRIMÉ. All rights reserved.</p>
-
-</footer>
-<script>
-
-function filterProducts(category) {
-
-  const products = document.querySelectorAll('.product');
-
-  products.forEach(function(product) {
-
-    if (category === 'all' || product.dataset.category === category) {
-
-      product.style.display = '';
-
-    } else {
-
-      product.style.display = 'none';
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIMÉ | RENT • SELL • REUSE</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --bg-cream: #F7F3EE;
+      --card-bg: #EFE9E1;
+      --latte: #DFD3C3;
+      --brown: #6B533B;
+      --dark-brown: #2C2117;
+      --text-muted: #7A6E65;
+      --white: #FFFFFF;
     }
 
-  });
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Prompt', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--dark-brown);
+      line-height: 1.5;
+    }
 
-}
+    /* Header & Navbar */
+    header {
+      background-color: var(--bg-cream);
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(44, 33, 23, 0.08);
+    }
+    .logo-wrap { text-align: left; cursor: pointer; }
+    .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .logo-sub { font-size: 8px; letter-spacing: 2.5px; color: var(--text-muted); margin-top: 2px; }
 
-</script>
+    nav { display: flex; gap: 24px; align-items: center; }
+    nav a {
+      text-decoration: none;
+      color: var(--dark-brown);
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: 0.2s;
+    }
+    nav a.active, nav a:hover { background-color: var(--latte); font-weight: 500; }
 
-</body>
+    .nav-icons { display: flex; gap: 18px; align-items: center; }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      color: var(--dark-brown);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Prompt', sans-serif;
+      font-size: 13px;
+    }
+    .badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: var(--dark-brown);
+      color: var(--white);
+      font-size: 10px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-</html>
+    /* Hero Banner */
+    .hero {
+      position: relative;
+      height: 460px;
+      background: linear-gradient(to right, rgba(35, 25, 18, 0.65), rgba(35, 25, 18, 0.15)),
+                  url('https://unsplash.com') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      color: var(--white);
+    }
+    .hero-content { max-width: 520px; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      line-height: 1.05;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .hero p { font-size: 16px; font-weight: 300; margin-bottom: 24px; opacity: 0.95; }
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--latte);
+      color: var(--dark-brown);
+      padding: 12px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-pill:hover { background: var(--white); }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 48px 5%; }
+
+    /* Shop by Category */
+    .cat-header { text-align: center; margin-bottom: 32px; }
+    .cat-header h2 { font-size: 22px; font-weight: 500; }
+    .cat-header span { font-size: 11px; letter-spacing: 2px; color: var(--text-muted); }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+    .cat-item { cursor: pointer; transition: transform 0.2s; }
+    .cat-item:hover { transform: translateY(-4px); }
+    .cat-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+      margin: 0 auto 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid transparent;
+    }
+    .cat-item.active .cat-circle { border-color: var(--brown); }
+    .cat-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .cat-name-th { font-size: 14px; font-weight: 500; }
+    .cat-name-en { font-size: 11px; color: var(--text-muted); }
+
+    /* Split Promo Cards (Rent / Pre-loved) */
+    .promo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .promo-card {
+      height: 230px;
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .promo-rent {
+      background: linear-gradient(to right, rgba(44,33,23,0.75), rgba(44,33,23,0.2)),
+                  url('https://unsplash.com') center/cover;
+    }
+    .promo-preloved {
+      background: linear-gradient(to right, rgba(44,33,23,0.75), rgba(44,33,23,0.2)),
+                  url('https://unsplash.com') center/cover;
+    }
+    .promo-card h3 { font-size: 24px; font-weight: 500; line-height: 1.2; }
+    .promo-card small { font-size: 12px; letter-spacing: 1.5px; opacity: 0.9; margin-bottom: 8px; }
+    .promo-card p { font-size: 13px; font-weight: 300; margin-bottom: 18px; }
+
+    /* Products Section */
+    .sec-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+    .sec-title-row h2 { font-size: 22px; font-weight: 500; }
+    .sec-title-row span { font-size: 12px; color: var(--text-muted); }
+    .view-all { font-size: 13px; color: var(--dark-brown); text-decoration: none; cursor: pointer; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      transition: 0.2s;
+    }
+    .product-card:hover { transform: translateY(-3px); }
+    .prod-img-wrap {
+      position: relative;
+      height: 220px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .prod-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .price-tag {
+      display: inline-block;
+      background: var(--bg-cream);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--brown);
+      margin-bottom: 4px;
+      width: 100%;
+    }
+    .add-cart-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      background: var(--dark-brown);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'Prompt', sans-serif;
+    }
+    .add-cart-btn:hover { background: var(--brown); }
+
+    /* Share / Sell Banner */
+    .share-banner {
+      background: linear-gradient(to right, rgba(44, 33, 23, 0.92), rgba(44, 33, 23, 0.65)),
+                  url('https://unsplash.com') center/cover;
+      border-radius: 16px;
+      padding: 42px 48px;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .share-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; }
+    .share-banner p { font-size: 14px; font-weight: 300; opacity: 0.9; }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-brown);
+      color: var(--latte);
+      padding: 48px 6% 24px;
+      margin-top: 60px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-links { display: flex; gap: 48px; }
+    .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 500; }
+    .footer-col span { font-size: 11px; color: var(--text-muted); }
+    .footer-bottom { text-align: center; font-size: 12px; padding-top: 20px; color: var(--text-muted); }
+
+    /* Modal (Login & Cart) */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-box {
+      background: var(--bg-cream);
+      padding: 32px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 380px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .close-modal {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-box h3 { font-size: 20px; margin-bottom: 6px; text-align: center; }
+    .modal-box p { font-size: 12px; color: var(--text-muted); text-align: center; margin-bottom: 20px; }
+    .input-group { margin-bottom: 14px; }
+    .input-group input {
