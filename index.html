@@ -1,400 +1,471 @@
 
+
 <!DOCTYPE html>
+
 <html lang="th">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRIMÉ | Secondhand Marketplace</title>
+
+<title>TRIMÉ | Pre-loved & Rental Market</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+:root {
+
+  --cream:#F5F0E9;
+
+  --latte:#DCC8B5;
+
+  --brown:#806653;
+
+  --dark:#292522;
+
+  --white:#fff;
+
 }
+
+* { box-sizing:border-box; }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f7f7f7;
-  color: #333;
+
+  margin:0;
+
+  font-family:Arial,sans-serif;
+
+  background:var(--cream);
+
+  color:var(--dark);
+
 }
 
-/* HEADER */
 header {
-  background: #d97855;
-  color: white;
-  padding: 18px 5%;
-}
 
-.top {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  max-width: 1250px;
-  margin: auto;
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:18px 6%;
+
+  background:var(--cream);
+
+  position:sticky;
+
+  top:0;
+
+  z-index:5;
+
 }
 
 .logo {
-  font-size: 30px;
-  font-weight: bold;
-  letter-spacing: 4px;
-}
 
-.search {
-  flex: 1;
-  display: flex;
-  background: white;
-  border-radius: 5px;
-  overflow: hidden;
-}
+  font-size:27px;
 
-.search input {
-  flex: 1;
-  padding: 13px;
-  border: none;
-  outline: none;
-}
+  font-weight:bold;
 
-.search button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 0 25px;
-  cursor: pointer;
-}
+  letter-spacing:5px;
 
-.cart {
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-/* NAVIGATION */
-nav {
-  max-width: 1250px;
-  margin: 15px auto 0;
-  display: flex;
-  gap: 25px;
-  font-size: 14px;
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
+
+  color:var(--dark);
+
+  text-decoration:none;
+
+  margin-left:16px;
+
+  font-size:13px;
+
 }
 
-/* BANNER */
-.banner {
-  max-width: 1250px;
-  margin: 25px auto;
-  padding: 65px 35px;
-  background: #eee2d5;
-  border-radius: 12px;
-  text-align: center;
+.hero {
+
+  margin:18px 5%;
+
+  padding:65px 8%;
+
+  min-height:290px;
+
+  border-radius:18px;
+
+  background:linear-gradient(120deg,#DCC8B5,#EFE4D8);
+
 }
 
-.banner h1 {
-  font-size: 38px;
-  letter-spacing: 5px;
-  margin-bottom: 15px;
+.hero small { letter-spacing:3px; }
+
+.hero h1 { font-size:38px; margin:15px 0; }
+
+.hero p { line-height:1.7; }
+
+.btn {
+
+  display:inline-block;
+
+  background:var(--dark);
+
+  color:white;
+
+  padding:12px 22px;
+
+  border-radius:5px;
+
+  text-decoration:none;
+
+  margin-top:12px;
+
+  border:0;
+
 }
 
-.banner p {
-  margin-bottom: 25px;
-  color: #666;
-}
-
-.banner button {
-  padding: 13px 35px;
-  border: none;
-  background: #d97855;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* CATEGORY */
-.container {
-  max-width: 1250px;
-  margin: auto;
-  padding: 15px;
-}
+section { padding:28px 6%; }
 
 .section-title {
-  font-size: 21px;
-  margin-bottom: 20px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
 }
 
+.section-title h2 { font-size:23px; }
+
 .categories {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:12px;
+
 }
 
 .category {
-  background: white;
-  padding: 20px 8px;
-  text-align: center;
-  border-radius: 8px;
-  cursor: pointer;
+
+  background:#E9DED2;
+
+  padding:23px 8px;
+
+  text-align:center;
+
+  border-radius:12px;
+
+  font-weight:bold;
+
 }
 
-.category span {
-  font-size: 30px;
-  display: block;
-  margin-bottom: 10px;
+.tabs {
+
+  display:flex;
+
+  gap:12px;
+
+  flex-wrap:wrap;
+
+  margin:18px 0;
+
 }
 
-/* PRODUCTS */
+.tabs a {
+
+  padding:11px 18px;
+
+  background:var(--latte);
+
+  border-radius:30px;
+
+  color:var(--dark);
+
+  text-decoration:none;
+
+}
+
 .products {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:14px;
+
 }
 
 .product {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: .2s;
-}
 
-.product:hover {
-  transform: translateY(-4px);
+  background:white;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  padding-bottom:15px;
+
 }
 
 .product img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+
+  width:100%;
+
+  height:170px;
+
+  object-fit:cover;
+
+  background:#E9DED2;
+
 }
 
-.product-info {
-  padding: 12px;
-}
+.product h3,.product p { margin:10px 12px; }
 
-.product h3 {
-  font-size: 14px;
-  font-weight: normal;
-  min-height: 36px;
-}
-
-.price {
-  color: #d97855;
-  font-size: 19px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.old-price {
-  color: #aaa;
-  text-decoration: line-through;
-  font-size: 12px;
-}
+.product p { color:var(--brown); font-size:14px; }
 
 .product button {
-  width: 100%;
-  margin-top: 12px;
-  padding: 10px;
-  background: #d97855;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+
+  margin:0 12px;
+
+  padding:9px 14px;
+
+  background:var(--dark);
+
+  color:white;
+
+  border:0;
+
+  border-radius:5px;
+
+}
+
+.join {
+
+  margin:25px 5%;
+
+  padding:35px 20px;
+
+  background:var(--latte);
+
+  text-align:center;
+
+  border-radius:15px;
+
 }
 
 footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 35px;
-  margin-top: 50px;
+
+  background:var(--dark);
+
+  color:white;
+
+  text-align:center;
+
+  padding:28px;
+
+  font-size:13px;
+
 }
 
-@media(max-width: 700px) {
-  .top {
-    flex-wrap: wrap;
-  }
-  .search {
-    order: 3;
-    flex-basis: 100%;
-  }
-  nav {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .banner h1 {
-    font-size: 26px;
-  }
-  .categories {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media(min-width:700px) {
+
+  .categories { grid-template-columns:repeat(6,1fr); }
+
+  .products { grid-template-columns:repeat(4,1fr); }
+
+  .hero h1 { font-size:48px; }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-  <div class="top">
-    <div class="logo">TRIMÉ.</div>
 
-    <div class="search">
-      <input id="searchInput"
-      placeholder="ค้นหาสินค้าที่คุณต้องการ...">
-      <button onclick="searchProducts()">ค้นหา</button>
-    </div>
-
-    <div class="cart" onclick="showCart()">
-      🛒 ตะกร้า (<span id="cartCount">0</span>)
-    </div>
-  </div>
+  <div class="logo">TRIMÉ</div>
 
   <nav>
-    <a href="#">หน้าแรก</a>
-    <a href="#categories">หมวดหมู่</a>
-    <a href="#products">สินค้าทั้งหมด</a>
-    <a href="#">โปรโมชั่น</a>
-    <a href="#">ลงขายสินค้า</a>
-    <a href="#">เข้าสู่ระบบ</a>
+
+    <a href="#home">Home</a>
+
+    <a href="#rent">Rent</a>
+
+    <a href="#preloved">Pre-loved</a>
+
+    <a href="#sell">ลงประกาศ</a>
+
   </nav>
+
 </header>
 
-<section class="banner">
-  <h1>TRIMÉ MARKET</h1>
-  <p>Secondhand Items, New Stories.</p>
-  <p>ช้อปสินค้ามือสองคุณภาพดี ในราคาที่คุณต้องหลงรัก</p>
-  <button onclick="document.getElementById('products').scrollIntoView()">
-    เริ่มช้อปเลย
-  </button>
-</section>
+<main id="home">
 
-<main class="container">
+  <div class="hero">
 
-<section id="categories">
-  <h2 class="section-title">หมวดหมู่สินค้า</h2>
+    <small>THE NEW WAY TO SHOP</small>
 
-  <div class="categories">
-    <div class="category"><span>👗</span>เสื้อผ้า</div>
-    <div class="category"><span>👜</span>กระเป๋า</div>
-    <div class="category"><span>👟</span>รองเท้า</div>
-    <div class="category"><span>💄</span>เครื่องสำอาง</div>
-    <div class="category"><span>💍</span>เครื่องประดับ</div>
-    <div class="category"><span>🎧</span>สินค้าอื่น ๆ</div>
-  </div>
-</section>
+    <h1>Give Items<br>A Second Life.</h1>
 
-<br><br>
+    <p>ค้นพบสินค้าแฟชั่นมือสองและไอเทมให้เช่า<br>
 
-<section id="products">
-  <h2 class="section-title">สินค้ามาใหม่ ✨</h2>
+    เลือกสไตล์ที่ใช่ ในราคาที่คุณชอบ</p>
 
-  <div class="products">
-
-    <div class="product">
-      <img src="https://placehold.co/400x400/eee5dc/555?text=Vintage+Bag">
-      <div class="product-info">
-        <h3>กระเป๋าวินเทจสไตล์เกาหลี</h3>
-        <p class="price">฿390</p>
-        <p class="old-price">฿690</p>
-        <button onclick="addCart('กระเป๋าวินเทจ',390)">เพิ่มลงตะกร้า</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://placehold.co/400x400/e9e5df/555?text=Korean+Shirt">
-      <div class="product-info">
-        <h3>เสื้อเชิ้ตสไตล์มินิมอล</h3>
-        <p class="price">฿250</p>
-        <p class="old-price">฿450</p>
-        <button onclick="addCart('เสื้อเชิ้ต',250)">เพิ่มลงตะกร้า</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://placehold.co/400x400/eee8e2/555?text=Shoes">
-      <div class="product-info">
-        <h3>รองเท้าสไตล์วินเทจ</h3>
-        <p class="price">฿450</p>
-        <p class="old-price">฿790</p>
-        <button onclick="addCart('รองเท้าวินเทจ',450)">เพิ่มลงตะกร้า</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://placehold.co/400x400/f0e7e1/555?text=Accessories">
-      <div class="product-info">
-        <h3>เครื่องประดับมินิมอล</h3>
-        <p class="price">฿120</p>
-        <p class="old-price">฿250</p>
-        <button onclick="addCart('เครื่องประดับ',120)">เพิ่มลงตะกร้า</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://placehold.co/400x400/e9e3dc/555?text=Fashion">
-      <div class="product-info">
-        <h3>เสื้อแฟชั่นมือสอง</h3>
-        <p class="price">฿180</p>
-        <p class="old-price">฿350</p>
-        <button onclick="addCart('เสื้อแฟชั่น',180)">เพิ่มลงตะกร้า</button>
-      </div>
-    </div>
+    <a class="btn" href="#categories">EXPLORE NOW</a>
 
   </div>
-</section>
+
+  <section id="categories">
+
+    <div class="section-title">
+
+      <h2>Shop by Category</h2>
+
+    </div>
+
+    <div class="categories">
+
+      <div class="category">👜<br>กระเป๋า</div>
+
+      <div class="category">👗<br>เสื้อผ้า</div>
+
+      <div class="category">👟<br>รองเท้า</div>
+
+      <div class="category">💍<br>เครื่องประดับ</div>
+
+      <div class="category">⌚<br>นาฬิกา</div>
+
+      <div class="category">✨<br>ความงาม</div>
+
+    </div>
+
+  </section>
+
+  <section id="rent">
+
+    <div class="section-title">
+
+      <h2>Daily Rental</h2>
+
+      <span>เช่ารายวัน</span>
+
+    </div>
+
+    <div class="tabs">
+
+      <a href="#rent">ดูสินค้าเช่า</a>
+
+      <a href="#sell">ลงสินค้าให้เช่า</a>
+
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="กระเป๋าแฟชั่น">
+
+        <h3>Classic Bag</h3>
+
+        <p>ราคาเช่า ฿150 / วัน</p>
+
+        <button onclick="alert('ตัวอย่างหน้าสินค้าเช่า')">ดูรายละเอียด</button>
+
+      </div>
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" alt="เสื้อผ้า">
+
+        <h3>Minimal Outfit</h3>
+
+        <p>ราคาเช่า ฿120 / วัน</p>
+
+        <button onclick="alert('ตัวอย่างหน้าสินค้าเช่า')">ดูรายละเอียด</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="preloved">
+
+    <div class="section-title">
+
+      <h2>Pre-loved Items</h2>
+
+      <span>ขายสินค้ามือสอง</span>
+
+    </div>
+
+    <div class="tabs">
+
+      <a href="#preloved">ดูสินค้ามือสอง</a>
+
+      <a href="#sell">ลงขายสินค้า</a>
+
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500" alt="กระเป๋ามือสอง">
+
+        <h3>Everyday Bag</h3>
+
+        <p>ราคาขาย ฿890</p>
+
+        <button onclick="alert('ตัวอย่างหน้าสินค้ามือสอง')">ดูรายละเอียด</button>
+
+      </div>
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="รองเท้ามือสอง">
+
+        <h3>Classic Sneakers</h3>
+
+        <p>ราคาขาย ฿650</p>
+
+        <button onclick="alert('ตัวอย่างหน้าสินค้ามือสอง')">ดูรายละเอียด</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="join" id="sell">
+
+    <h2>Have Something to Share?</h2>
+
+    <p>เปลี่ยนของที่ไม่ได้ใช้ ให้กลายเป็นโอกาสใหม่</p>
+
+    <a class="btn" href="mailto:hello@trime.example">ลงประกาศสินค้า</a>
+
+    <p><small>ตัวอย่างเว็บไซต์: ระบบลงประกาศและสมาชิกยังไม่เชื่อมต่อจริง</small></p>
+
+  </div>
 
 </main>
 
 <footer>
-  <h2>TRIMÉ.</h2>
-  <p>Secondhand Marketplace & Rental Platform</p>
-  <p>© 2026 TRIMÉ. All Rights Reserved.</p>
+
+  <div class="logo">TRIMÉ</div>
+
+  <p>Pre-loved & Rental Marketplace</p>
+
+  <p>© 2026 TRIMÉ. All rights reserved.</p>
+
 </footer>
 
-<script>
-let cart = [];
-
-function addCart(name, price) {
-  cart.push({name, price});
-  document.getElementById('cartCount').innerText = cart.length;
-  alert('เพิ่ม ' + name + ' ลงตะกร้าแล้ว!');
-}
-
-function showCart() {
-  if(cart.length === 0) {
-    alert('ยังไม่มีสินค้าในตะกร้า');
-    return;
-  }
-
-  let total = 0;
-  let message = 'สินค้าในตะกร้า:\\n';
-
-  cart.forEach(item => {
-    message += item.name + ' - ฿' + item.price + '\\n';
-    total += item.price;
-  });
-
-  message += '\\nรวมทั้งหมด ฿' + total;
-  alert(message);
-}
-
-function searchProducts() {
-  let keyword = document.getElementById('searchInput')
-    .value.toLowerCase();
-
-  let products = document.querySelectorAll('.product');
-
-  products.forEach(product => {
-    product.style.display =
-      product.innerText.toLowerCase().includes(keyword)
-      ? 'block' : 'none';
-  });
-}
-</script>
-
 </body>
+
 </html>
